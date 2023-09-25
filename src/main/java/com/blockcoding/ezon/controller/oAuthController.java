@@ -13,7 +13,6 @@ import java.util.Map;
 @Slf4j
 @CrossOrigin(origins="*")
 public class oAuthController {
-
     @GetMapping("/whaleSpace/getUserInfo")
     public Object getUserInfo(@RequestParam("code") String token) throws JsonProcessingException {
         RestTemplate restTemplate = new RestTemplate();
@@ -35,5 +34,10 @@ public class oAuthController {
         Object fullName = nameMap.get("fullName");
         log.info(fullName.toString() + "님이 로그인 하셨습니다.");
         return fullName;
+    }
+
+    @GetMapping("/whaleSpace/Logout")
+    public void writeLogoutLog(@RequestParam("userName") String userName){
+        log.info(userName + "님이 로그아웃 하셨습니다.");
     }
 }
